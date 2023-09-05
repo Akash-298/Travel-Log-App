@@ -1,20 +1,5 @@
 @charset "UTF-8";
-/**
- *
- * three-dots.css v0.1.0
- *
- * https://nzbin.github.io/three-dots/
- *
- * Copyright (c) 2018 nzbin
- *
- * Released under the MIT license
- *
- */
-/**
- * ==============================================
- * Dot Elastic
- * ==============================================
- */
+
 .dot-elastic {
   position: relative;
   width: 10px;
@@ -1024,12 +1009,7 @@
   }
 }
 
-/**
- * ==============================================
- * Experiment-Gooey Effect
- * Dot Overtaking
- * ==============================================
- */
+
 .dot-overtaking {
   position: relative;
   width: 12px;
@@ -1077,12 +1057,7 @@
   }
 }
 
-/**
- * ==============================================
- * Experiment-Gooey Effect
- * Dot Shuttle
- * ==============================================
- */
+
 .dot-shuttle {
   position: relative;
   left: -15px;
@@ -1131,12 +1106,7 @@
   }
 }
 
-/**
- * ==============================================
- * Experiment-Emoji
- * Dot Bouncing
- * ==============================================
- */
+
 .dot-bouncing {
   position: relative;
   height: 10px;
@@ -1174,12 +1144,7 @@
   }
 }
 
-/**
- * ==============================================
- * Experiment-Emoji
- * Dot Rolling
- * ==============================================
- */
+
 .dot-rolling {
   position: relative;
   height: 10px;
