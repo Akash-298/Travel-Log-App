@@ -1,12 +1,17 @@
 
+import { BrowserRouter } from 'react-router-dom'
 import './App.css'
+import Application from './application'
 
 function App() {
  
 
   return (
     <>
-    <div>Hii</div> 
+    <BrowserRouter>
+      <Application></Application>
+    </BrowserRouter>
+    
     </>
   )
 }
