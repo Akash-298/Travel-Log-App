@@ -1,5 +1,5 @@
 const config = {
-    firsbase:{
+    firebase:{
         apiKey: "AIzaSyAdXCzi-zgYZ9vPFEhEDy9rSNPg_qaa0tM",
         authDomain: "travel-log-app-ebe7a.firebaseapp.com",
         projectId: "travel-log-app-ebe7a",
@@ -11,3 +11,5 @@ const config = {
         url : 'http://localhost:1337'
     }
 }
+
+export default config

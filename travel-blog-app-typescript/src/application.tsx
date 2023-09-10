@@ -1,112 +1,113 @@
-// import React, { useEffect, useReducer, useState } from "react";
-// import { Route, RouteComponentProps, Routes } from "react-router";
-// // import AuthRoute from './components/AuthRoute';
-// // import LoadingComponent from './components/LoadingComponent';
-// import logging from "./config/logging";
-// import routes from "./config/routes";
-// import {
-//   initialUserState,
-//   UserContextProvider,
-//   userReducer,
-// } from "./contexts/user";
-// // import { Switch } from 'react-router';
-// // import { Validate } from './modules/Auth';
+import React, { useEffect, useReducer, useState } from "react";
+import { Route, RouteComponentProps, Routes } from "react-router";
+import AuthRoute from './components/AuthRoute';
+import LoadingComponent from './components/LoadingComponent';
+import logging from "./config/logging";
+import routes from "./config/routes";
+import {
+  initialUserState,
+  UserContextProvider,
+  userReducer,
+} from "./contexts/user";
 
-// export interface IApplicationProps {}
+// import { Switch } from 'react-router';
+// import { Validate } from './modules/Auth';
 
-// const Application: React.FunctionComponent<IApplicationProps> = (props) => {
-//   const [userState, userDispatch] = useReducer(userReducer, initialUserState);
-//   const [authStage, setAuthStage] = useState<string>(
-//     "Checking localstorage ..."
-//   );
-//   const [loading, setLoading] = useState<boolean>(true);
+export interface IApplicationProps {}
 
-//   useEffect(() => {
-//     setTimeout(() => {
-//       CheckLocalStorageForCredentials();
-//     }, 1000);
+const Application: React.FunctionComponent<IApplicationProps> = (props) => {
+  const [userState, userDispatch] = useReducer(userReducer, initialUserState);
+  const [authStage, setAuthStage] = useState<string>(
+    "Checking localstorage ..."
+  );
+  const [loading, setLoading] = useState<boolean>(true);
 
-//     // eslint-disable-next-line
-//   }, []);
+  useEffect(() => {
+    setTimeout(() => {
+      CheckLocalStorageForCredentials();
+    }, 1000);
 
-//   const CheckLocalStorageForCredentials = () => {
-//     setAuthStage("Checking credentials ...");
+    // eslint-disable-next-line
+  }, []);
 
-//     const fire_token = localStorage.getItem("fire_token");
+  const CheckLocalStorageForCredentials = () => {
+    setAuthStage("Checking credentials ...");
 
-//     if (fire_token === null) {
-//       userDispatch({ type: "logout", payload: initialUserState });
-//       setAuthStage("No credentials found");
-//       setTimeout(() => {
-//         setLoading(false);
-//       }, 500);
-//     } else {
-//       return Validate(fire_token, (error, user) => {
-//         if (error) {
-//           logging.error(error);
-//           userDispatch({ type: "logout", payload: initialUserState });
-//           setLoading(false);
-//         } else if (user) {
-//           userDispatch({ type: "login", payload: { user, fire_token } });
-//           setLoading(false);
-//         }
-//       });
-//     }
-//   };
+    const fire_token = localStorage.getItem("fire_token");
 
-//   const userContextValues = {
-//     userState,
-//     userDispatch,
-//   };
+    if (fire_token === null) {
+      userDispatch({ type: "logout", payload: initialUserState });
+      setAuthStage("No credentials found");
+      setTimeout(() => {
+        setLoading(false);
+      }, 500);
+    } else {
+      return Validate(fire_token, (error, user) => {
+        if (error) {
+          logging.error(error);
+          userDispatch({ type: "logout", payload: initialUserState });
+          setLoading(false);
+        } else if (user) {
+          userDispatch({ type: "login", payload: { user, fire_token } });
+          setLoading(false);
+        }
+      });
+    }
+  };
 
-//   if (loading) {
-//     return <LoadingComponent>{authStage}</LoadingComponent>;
-//   }
+  const userContextValues = {
+    userState,
+    userDispatch,
+  };
 
-//   return (
-//     <UserContextProvider value={userContextValues}>
-//       <Routes>
-//         {routes.map((route, index) => {
-//           if (route.auth) {
-//             return (
-//               <Route
-//                 path={route.path}
-//                 key={index}
-//                 element={
-//                   <AuthRoute>
-//                     <route.component />
-//                   </AuthRoute>
-//                 }
-//               />
-//             );
-//           }
+  if (loading) {
+    return <LoadingComponent>{authStage}</LoadingComponent>;
+  }
 
-//           return (
-//             <Route
-//               path={route.path}
-//               key={index}
-//               render={(routeProps: RouteComponentProps) => (
-//                 <route.component {...routeProps} />
-//               )}
-//             />
-//           );
-//         })}
-//       </Routes>
-//     </UserContextProvider>
-//   );
-// };
+  return (
+    <UserContextProvider value={userContextValues}>
+      <Routes>
+        {routes.map((route, index) => {
+          if (route.auth) {
+            return (
+              <Route
+                path={route.path}
+                key={index}
+                element={
+                  <AuthRoute>
+                    <route.component />
+                  </AuthRoute>
+                }
+              />
+            );
+          }
 
-// export default Application;
+          return (
+            <Route
+              path={route.path}
+              key={index}
+              render={(routeProps: RouteComponentProps) => (
+                <route.component {...routeProps} />
+              )}
+            />
+          );
+        })}
+      </Routes>
+    </UserContextProvider>
+  );
+};
 
-import  React from "react";
-// import IPageProps from "../interfaces/page";
-// import  IPageProps from "./page";
+export default Application;
 
-export interface IApplicationProps{}
-const Application: React.FunctionComponent<IApplicationProps> = props => {
-return (
+// import  React from "react";
+// // import IPageProps from "../interfaces/page";
+// // import  IPageProps from "./page";
 
-<div></div>
-);
-}
-export default Application
+// export interface IApplicationProps{}
+// const Application: React.FunctionComponent<IApplicationProps> = props => {
+// return (
+
+// <div></div>
+// );
+// }
+// export default Application
