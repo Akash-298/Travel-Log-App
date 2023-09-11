@@ -5,16 +5,15 @@ const config = {
             useNewUrlParser:true,
             socketTimeoutMS:30000,
             keepAlive: true, 
-            poolSize:50,
+            maxPoolSize:50,
             autoIndex:false,
             retryWrites: false
         },
-        url:`mongodb+srv://akashchikhalonde88088:guessit@cluster0.expag4k.mongodb.net/myDataBAse`
+        url:`mongodb+srv://akashchikhalonde88088:doitnow@cluster0.expag4k.mongodb.net/?retryWrites=true&w=majority`,
     },
     server :{
         host: 'localhost',
         port:1337
     }
 }
-
-export  default config
+export default config
