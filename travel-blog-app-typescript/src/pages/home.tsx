@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Container } from 'reactstrap';
+import Navigation from '../components/Navigation';
+import Header from '../components/Header';
+import LoadingComponent from '../components/LoadingComponent';
+import ErrorText from '../components/ErrorText';
 
 const HomePage: React.FunctionComponent<{}> = props => {
     const [blogs, setBlogs] = useState<IBlog[]>([]);

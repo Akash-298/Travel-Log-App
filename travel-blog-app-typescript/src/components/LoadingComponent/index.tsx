@@ -3,6 +3,7 @@ import { Card, CardBody } from 'reactstrap';
 import CenterPiece from '../CenterPiece';
 
 export interface ILoadingProps {
+    children?: React.ReactNode;
     dotType?: string;
 }
 
@@ -25,6 +26,7 @@ Loading.defaultProps = {
 
 export interface ILoadingComponentProps {
     card?: boolean;
+    children?: React.ReactNode;
     dotType?: string;
 }
 

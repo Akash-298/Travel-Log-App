@@ -86,9 +86,8 @@ const Application: React.FunctionComponent<IApplicationProps> = (props) => {
             <Route
               path={route.path}
               key={index}
-              render={(routeProps: RouteComponentProps) => (
-                <route.component {...routeProps} />
-              )}
+              element={<route.component />}
+        
             />
           );
         })}
