@@ -9,6 +9,7 @@ import {
   UserContextProvider,
   userReducer,
 } from "./contexts/user";
+import { Validate } from "./modules/Auth";
 
 // import { Switch } from 'react-router';
 // import { Validate } from './modules/Auth';
@@ -45,11 +46,19 @@ const Application: React.FunctionComponent<IApplicationProps> = (props) => {
       return Validate(fire_token, (error, user) => {
         if (error) {
           logging.error(error);
+          setAuthStage("User not valid, logging out...");
+
           userDispatch({ type: "logout", payload: initialUserState });
-          setLoading(false);
+          setTimeout(() => {
+            setLoading(false);
+          }, 500);
         } else if (user) {
+          setAuthStage("User Authenticated");
+
           userDispatch({ type: "login", payload: { user, fire_token } });
-          setLoading(false);
+          setTimeout(() => {
+            setLoading(false);
+          }, 500);
         }
       });
     }
