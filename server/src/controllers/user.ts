@@ -27,7 +27,7 @@ const validate = (req: Request, res: Response, next: NextFunction) => {
 };
 
 const create = (req: Request, res: Response, next: NextFunction) => {
-    logging.info('Attempting to register user ...');
+    logging.info('Trying to register the user...');
 
     let { uid, name } = req.body;
     let fire_token = res.locals.fire_token;
