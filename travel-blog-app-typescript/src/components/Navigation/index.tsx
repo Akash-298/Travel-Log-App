@@ -9,7 +9,7 @@ const Navigation: React.FunctionComponent<INavigationProps> = props => {
     const userContext = useContext(UserContext);
     const { user } = userContext.userState;
 
-    const logout = () => {
+    const Logout = () => {
         userContext.userDispatch({ type: 'logout', payload: userContext.userState });
     }
 
@@ -25,7 +25,7 @@ const Navigation: React.FunctionComponent<INavigationProps> = props => {
                             Post a Blog
                         </Button>
                         <NavbarText className="ml-2 mr-2">|</NavbarText>
-                        <Button outline size="sm" onClick={() => logout()}>
+                        <Button outline size="sm" onClick={() => Logout()}>
                             Logout
                         </Button>
                     </div>

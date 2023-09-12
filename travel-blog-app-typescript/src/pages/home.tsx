@@ -5,6 +5,12 @@ import Navigation from '../components/Navigation';
 import Header from '../components/Header';
 import LoadingComponent from '../components/LoadingComponent';
 import ErrorText from '../components/ErrorText';
+import IBlog from '../interfaces/blog';
+import axios from 'axios';
+import config from '../config/config';
+import logging from '../config/logging';
+import BlogPreview from '../components/BlogPreview';
+import IUser from '../interfaces/user';
 
 const HomePage: React.FunctionComponent<{}> = props => {
     const [blogs, setBlogs] = useState<IBlog[]>([]);
@@ -25,7 +31,7 @@ const HomePage: React.FunctionComponent<{}> = props => {
 
             if (response.status === (200 || 304))
             {
-                let blogs = response.data.blogs as IBlog[];
+                const blogs = response.data.blogs as IBlog[];
                 blogs.sort((x,y) => y.updatedAt.localeCompare(x.updatedAt));
 
                 setBlogs(blogs);
@@ -36,8 +42,8 @@ const HomePage: React.FunctionComponent<{}> = props => {
             }
         } 
         catch (error) 
-        {
-            setError(error.message);
+        {logging.error(error)
+            setError('Unable to retrive blogs');
         }
         finally
         {

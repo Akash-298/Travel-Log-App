@@ -5,10 +5,12 @@ import { Providers } from '../config/firebase';
 import logging from '../config/logging';
 import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
-import {  Authenticate, SignInWithSocialMedia } from '../modules/Auth';
+
 import CenterPiece from '../components/CenterPiece';
 import LoadingComponent from '../components/LoadingComponent';
 import UserContext from '../contexts/user';
+import { Authenticate } from '../modules/Auth';
+
 
 const LoginPage: React.FunctionComponent<{}> = props => {
     const [authenticating, setAuthenticating] = useState<boolean>(false);
