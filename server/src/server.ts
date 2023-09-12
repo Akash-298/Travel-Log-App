@@ -6,7 +6,7 @@ import mongoose from 'mongoose';
 import firebaseAdmin from 'firebase-admin';
 
 import userRoutes from './routes/user';
-// import blogRoutes from './routes/blog';
+import blogRoutes from './routes/blog';
 
 const router = express();
 
@@ -60,7 +60,7 @@ router.use((req, res, next) => {
 
 
 router.use('/users', userRoutes);
-// router.use('/blogs', blogRoutes);
+router.use('/blogs', blogRoutes);
 
 
 router.use((req, res, next) => {
