@@ -12,7 +12,7 @@ import logging from '../config/logging';
 import BlogPreview from '../components/BlogPreview';
 import IUser from '../interfaces/user';
 
-const HomePage: React.FunctionComponent<{}> = props => {
+const HomePage: React.FunctionComponent<{}> = () => {
     const [blogs, setBlogs] = useState<IBlog[]>([]);
     const [loading, setLoading] = useState<boolean>(true)
     const [error, setError] = useState<string>('');
