@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react';
-// import { RouteComponentProps, withRouter } from 'react-router';
 import { useParams} from 'react-router-dom';
 import { Button, Container, Form, FormGroup, Input, Label } from 'reactstrap';
 import axios from 'axios';
@@ -18,7 +17,7 @@ import SuccessText from '../components/SuccessText';
 import { Link } from 'react-router-dom';
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import IPageProps from '../interfaces/page';
-// import { withRouter } from 'react-router-dom';
+
 const EditPage: React.FunctionComponent<IPageProps> = () => {
     const [_id, setId] = useState<string>('');
     const [title, setTitle] = useState<string>('');
