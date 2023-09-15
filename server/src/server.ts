@@ -7,9 +7,10 @@ import firebaseAdmin from 'firebase-admin';
 
 import userRoutes from './routes/user';
 import blogRoutes from './routes/blog';
+import cors from "cors";
 
 const router = express();
-
+router.use(cors());
 
 const httpServer = http.createServer(router);
 

@@ -2,28 +2,36 @@ import { NextFunction, Request, Response } from 'express';
 import logging from '../config/logging';
 import User from '../models/user';
 import mongoose from 'mongoose';
+import admin from 'firebase-admin';
 
-const validate = (req: Request, res: Response, next: NextFunction) => {
-    logging.info('Token validated, ensuring user.');
+const validate = async (req: Request, res: Response, next: NextFunction) => {
+    const idToken = req.headers.authorization?.split('Bearer ')[1];
 
-    let firebase = res.locals.firebase;
-
-    return User.findOne({ uid: firebase.uid })
-        .then((user) => {
-            if (user) {
-                return res.status(200).json({ user });
-            } else {
-                return res.status(401).json({
-                    message: 'Token(s) invalid, user not found'
-                });
-            }
-        })
-        .catch((error) => {
-            return res.status(500).json({
-                message: error.message,
-                error
-            });
+    if (!idToken) {
+      return res.status(403).send('Unauthorized');
+    }
+  
+    try {
+      const decodedToken = await admin.auth().verifyIdToken(idToken);
+      const uid = decodedToken.uid;
+  
+    
+      const user = await User.findOne({ uid });
+  
+      if (user) {
+        return res.status(200).json({ user });
+      } else {
+        return res.status(401).json({
+          message: 'Token(s) invalid, user not found'
         });
+      }
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json({
+        message: "Unable to authorize",
+        error
+      });
+    }
 };
 
 const create = (req: Request, res: Response, next: NextFunction) => {
