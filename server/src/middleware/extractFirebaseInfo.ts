@@ -3,10 +3,6 @@ import { Request, Response, NextFunction } from 'express';
 import * as admin from 'firebase-admin';
 
 
-// if (!admin.apps.length) {
-//     admin.initializeApp();
-// }
-
 const extractFirebaseInfo = async (req: Request, res: Response, next: NextFunction) => {
     logger.info('Validating firebase token');
 
@@ -18,8 +14,8 @@ const extractFirebaseInfo = async (req: Request, res: Response, next: NextFuncti
             if (decodedToken) {
                 res.locals.firebase = decodedToken;
                 res.locals.fire_token = token;
-                console.log(decodedToken, "decoded token name is firebase"  )
-                console.log(token, "firebase_token")
+                // console.log(decodedToken, "decoded token name is firebase"  )
+                // console.log(token, "firebase_token")
             
                 next();
             } else {
