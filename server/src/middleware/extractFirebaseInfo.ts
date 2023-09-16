@@ -14,9 +14,7 @@ const extractFirebaseInfo = async (req: Request, res: Response, next: NextFuncti
             if (decodedToken) {
                 res.locals.firebase = decodedToken;
                 res.locals.fire_token = token;
-                // console.log(decodedToken, "decoded token name is firebase"  )
-                // console.log(token, "firebase_token")
-            
+              
                 next();
             } else {
                 logger.warn('Token invalid - Unauthorized');
