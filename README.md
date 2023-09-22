@@ -9,6 +9,9 @@ A demo video of the application can be found here.
 
 ## Screenshots
 Here are some screenshots of the application:
+![travel blog app](https://github.com/Akash-298/Travel-Log-App/assets/105929312/4f519887-ef28-4d30-b496-68fcb91aacd6)
+![travel blog](https://github.com/Akash-298/Travel-Log-App/assets/105929312/c043375e-23d2-4827-9c2f-979da921fa73)
+
 
 ## Features
 - Full stack application with TypeScript, React, Vite
